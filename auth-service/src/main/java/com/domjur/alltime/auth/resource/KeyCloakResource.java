@@ -2,8 +2,6 @@ package com.domjur.alltime.auth.resource;
 
 import com.domjur.alltime.auth.dto.UserDto;
 import com.domjur.alltime.auth.service.KeycloakService;
-import org.keycloak.representations.idm.ClientRepresentation;
-import org.keycloak.representations.idm.RoleRepresentation;
 import org.keycloak.representations.idm.UserRepresentation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
