@@ -1,15 +1,14 @@
 package com.domjur.alltime.auth.dto;
 
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 
 
+@Data
 @AllArgsConstructor
-@Getter
-@Setter
 public class UserDto {
     private String userName;
     private String emailId;
