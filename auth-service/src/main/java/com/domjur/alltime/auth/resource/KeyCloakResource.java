@@ -1,12 +1,12 @@
 package com.domjur.alltime.auth.resource;
 
 import com.domjur.alltime.auth.dto.UserDto;
+import com.domjur.alltime.auth.response.UserResponse;
 import com.domjur.alltime.auth.service.KeycloakService;
-import org.keycloak.representations.idm.UserRepresentation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 
@@ -17,18 +17,18 @@ public class KeyCloakResource {
     KeycloakService service;
 
     @PostMapping
-    public String addUser(@RequestBody UserDto userDto){
-        service.addUser(userDto);
-        return "User Added Successfully.";
+    public ResponseEntity<UserResponse> addUser(@RequestBody UserDto userDto){
+       UserResponse userResponse= service.addUser(userDto);
+        return new ResponseEntity<>(userResponse, HttpStatus.CREATED);
     }
 
     @GetMapping(path = "/{userName}")
-    public List<UserRepresentation> getUser(@PathVariable("userName") String userName){
-        List<UserRepresentation> user = service.getUser(userName);
-        return user;
+    public ResponseEntity<UserResponse> getUser(@PathVariable("userName") String userName){
+        UserResponse user = service.getUser(userName);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @PutMapping(path = "/update/{userId}")
+    /*@PutMapping(path = "/update/{userId}")
     public String updateUser(@PathVariable("userId") String userId, @RequestBody UserDto userDto){
         service.updateUser(userId, userDto);
         return "User Details Updated Successfully.";
@@ -50,5 +50,5 @@ public class KeyCloakResource {
     public String sendResetPassword(@PathVariable("userId") String userId){
         service.sendResetPassword(userId);
         return "Reset Password Link Send Successfully to Registered E-mail Id.";
-    }
+    }*/
 }

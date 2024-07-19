@@ -32,3 +32,6 @@ target/*
 auth-service/target/*
 mvnw
 mvnw.*
+/user-service/target
+*.yml
+src/main/resources/application.properties
